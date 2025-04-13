@@ -32,6 +32,43 @@
       </div>
     </div>
   </section>
+  <section class="order-form">
+  <h2>Form Pemesanan</h2>
+  <form action="https://wa.me/62XXXXXXXXXX" method="GET" target="_blank" onsubmit="return sendToWhatsApp();">
+    <input type="text" id="game-id" placeholder="ID Game" required />
+    <input type="text" id="server-id" placeholder="Server (kalau ada)" />
+    <select id="nominal">
+      <option value="" disabled selected>Pilih Nominal</option>
+      <option value="86 Diamonds">86 Diamonds</option>
+      <option value="172 Diamonds">172 Diamonds</option>
+      <option value="257 Diamonds">257 Diamonds</option>
+    </select>
+    <select id="payment">
+      <option value="" disabled selected>Pilih Pembayaran</option>
+      <option value="Dana">Dana</option>
+      <option value="OVO">OVO</option>
+      <option value="GoPay">GoPay</option>
+      <option value="Transfer Bank">Transfer Bank</option>
+    </select>
+    <button type="submit">Kirim ke WhatsApp</button>
+  </form>
+</section>
+
+<script>
+  function sendToWhatsApp() {
+    const id = document.getElementById("game-id").value;
+    const server = document.getElementById("server-id").value;
+    const nominal = document.getElementById("nominal").value;
+    const payment = document.getElementById("payment").value;
+    const phone = "62XXXXXXXXXX"; // Ganti dengan nomor WA Bos
+
+    const message = `Halo Admin, saya ingin top up:\n\nID: ${id}\nServer: ${server}\nNominal: ${nominal}\nPembayaran: ${payment}`;
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+
+    window.open(url, '_blank');
+    return false;
+  }
+</script>
 
   <footer>
     <p>&copy; 2025 DYDStore. All rights reserved.</p>
